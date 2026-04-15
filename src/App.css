@@ -1,18 +1,260 @@
+:root {
+  --bg-main: #0f172a;
+  --bg-secondary: #111827;
+  --surface: rgba(30, 41, 59, 0.72);
+  --surface-strong: #1f2937;
+  --text-main: #e5e7eb;
+  --text-muted: #cbd5e1;
+  --accent: #22d3ee;
+  --accent-warm: #fb923c;
+  --ring: rgba(34, 211, 238, 0.4);
+  --section-bg: linear-gradient(160deg, rgba(2, 6, 23, 0.78), rgba(15, 23, 42, 0.88));
+  --section-border: 1px solid rgba(148, 163, 184, 0.18);
+  --section-shadow: 0 12px 28px rgba(2, 6, 23, 0.18);
+}
 
-*{
-  font-size:x-large}
+* {
+  box-sizing: border-box;
+}
 
 body {
+  margin: 0;
+  padding: 0;
+  color: var(--text-main);
+  background: var(--bg-main);
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  min-height: 100vh;
+}
 
-    margin: 0;
-    background-color: #232534;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Caveat', cursive, 'Permanent Marker', sans-serif;
-    font-style: normal;
+a {
+  color: inherit;
+}
+
+.app-shell {
+  width: 100%;
+  margin: 0;
+  padding: 104px 18px 0;
+  animation: pageFade 0.7s ease;
+  position: relative;
+}
+
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ambient-gradient,
+.ambient-grid,
+.ambient-canvas,
+.ambient-icon-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.ambient-gradient {
+  background:
+    radial-gradient(circle at 15% 10%, rgba(34, 211, 238, 0.2), transparent 35%),
+    radial-gradient(circle at 80% 20%, rgba(251, 146, 60, 0.2), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(34, 211, 238, 0.15), transparent 30%),
+    radial-gradient(circle at 82% 70%, rgba(251, 146, 60, 0.12), transparent 28%),
+    radial-gradient(circle at 24% 68%, rgba(34, 211, 238, 0.1), transparent 26%),
+    var(--bg-main);
+}
+
+.ambient-grid {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.09) 1px, transparent 1px);
+  background-size: 44px 44px;
+  opacity: 0.25;
+}
+
+.ambient-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.ambient-icon-layer {
+  pointer-events: none;
+}
+
+.ambient-tech-icon {
+  position: absolute;
+  color: rgba(34, 211, 238, 0.52);
+  filter: drop-shadow(0 0 14px rgba(34, 211, 238, 0.34));
+  animation:
+    ambientIconDrift var(--icon-duration, 16s) ease-in-out infinite alternate,
+    ambientIconGlow 3.4s ease-in-out infinite;
+  animation-delay: var(--icon-delay, 0s);
+}
+
+.ambient-tech-icon:nth-child(even) {
+  color: rgba(251, 146, 60, 0.46);
+  filter: drop-shadow(0 0 14px rgba(251, 146, 60, 0.28));
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    padding-top: 132px;
   }
-  
-  code {
-    font-family: 'Caveat', cursive;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px) scale(0.985);
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.section-head {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 24px;
+}
+
+.section-kicker {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.section-title {
+  margin: 0 0 10px;
+  color: #f8fafc;
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 800;
+}
+
+.section-title span {
+  color: var(--accent);
+}
+
+.section-subtitle {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.65;
+  font-size: 1rem;
+}
+
+section,
+#contact {
+  margin-bottom: 56px;
+}
+
+#home,
+#about,
+#skills,
+#projects,
+#experience,
+#contact {
+  margin-bottom: 56px;
+}
+
+.home-shell,
+.about-shell,
+.ski,
+.projects-container,
+.experience-section,
+.contact-section {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  border-radius: 24px;
+  background: var(--section-bg);
+  border: var(--section-border);
+  box-shadow: var(--section-shadow);
+}
+
+@media (max-width: 768px) {
+  .home-shell,
+  .about-shell,
+  .ski,
+  .projects-container,
+  .experience-section,
+  .contact-section {
+    padding: 22px 14px;
   }
+}
+
+@keyframes pageFade {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ambientIconDrift {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.2;
+  }
+
+  50% {
+    transform: translate(10px, -12px) rotate(6deg);
+    opacity: 0.38;
+  }
+
+  100% {
+    transform: translate(-8px, 10px) rotate(-5deg);
+    opacity: 0.24;
+  }
+}
+
+@keyframes ambientIconGlow {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+
+  50% {
+    opacity: 0.58;
+  }
+}
+
+@media (max-width: 980px) {
+  .ambient-grid {
+    opacity: 0.2;
+    background-size: 36px 36px;
+  }
+
+  .ambient-bg {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
   

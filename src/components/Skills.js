@@ -12,82 +12,51 @@ import boot from '../assets/bootstrap.png';
 
 import './Skills.css';
 
+const skillItems = [
+  { name: 'HTML5', image: html, percent: '95%' },
+  { name: 'CSS3', image: css, percent: '95%' },
+  { name: 'JavaScript', image: js, percent: '90%' },
+  { name: 'React', image: re, percent: '95%' },
+  { name: 'Node.js', image: node, percent: '90%' },
+  { name: 'Express.js', image: ex, percent: '90%' },
+  { name: 'MongoDB', image: mongo, percent: '95%' },
+  { name: 'Python', image: py, percent: '95%' },
+  { name: 'Figma', image: fig, percent: '90%' },
+  { name: 'Bootstrap', image: boot, percent: '95%' },
+];
+
 const Skill = () => (
-  <div id="skills" className="ski">
-    <div className="skillsintro">
-      <br />
-      <br />
-      <h1 style={{ color: 'white', fontSize: '48px' }}>
+  <section id="skills" className="ski reveal">
+    <div className="skillsintro reveal" style={{ "--delay": "80ms" }}>
+      <h1 className="skills-title">
         My technical stack includes various technologies and tools
       </h1>
-      <h2 style={{ color: '#fcae28' }}>
+      <br />
+      <h2 className="skills-subtitle">
         Explore the technologies I utilize to drive innovation in my projects.
       </h2>
-      <a href="https://www.linkedin.com/in/monish-kanna-m-54b06a290/?originalSubdomain=in" target="_blank" rel="noopener noreferrer"> <button className="btn">Connect Me</button></a>
+      <br />
+      <a
+        className="skills-btn"
+        href="https://www.linkedin.com/in/monish-kanna-m-54b06a290/?originalSubdomain=in"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Connect Me
+      </a>
     </div>
-    <div className="cardlay">
-      <div className="cards">
-        <img src={html} alt="HTML5" />
-        <div className="progress" role="progressbar">
-          <div className="progress-bar" style={{ width: '75%', backgroundColor: '#fcae28' }}>95%</div>
+    <div className="cardlay reveal" style={{ "--delay": "160ms" }}>
+      {skillItems.map((skill) => (
+        <div className="cards" key={skill.name}>
+          <img src={skill.image} alt={skill.name} />
+          <h3 className="card-title">{skill.name}</h3>
+          <div className="progress" role="progressbar" aria-label={`${skill.name} proficiency`}>
+            <div className="progress-bar" style={{ width: skill.percent, backgroundColor: '#fcae28' }}>{skill.percent}</div>
+          </div>
         </div>
-      </div>
-      <div className="cards">
-        <img src={css} alt="CSS3" />
-        <div className="progress" role="progressbar">
-          <div className="progress-bar" style={{ width: '75%', backgroundColor: '#fcae28' }}>95%</div>
-        </div>
-      </div>
-      <div className="cards">
-        <img src={js} alt="JavaScript" />
-        <div className="progress" role="progressbar">
-          <div className="progress-bar" style={{ width: '75%', backgroundColor: '#fcae28' }}>90%</div>
-        </div>
-      </div>
-      <div className="cards">
-        <img src={re} alt="React" />
-        <div className="progress" role="progressbar">
-          <div className="progress-bar" style={{ width: '75%', backgroundColor: '#fcae28' }}>95%</div>
-        </div>
-      </div>
-      <div className="cards">
-        <img src={node} alt="Node.js" />
-        <div className="progress" role="progressbar">
-          <div className="progress-bar" style={{ width: '75%', backgroundColor: '#fcae28' }}>90%</div>
-        </div>
-      </div>
-      <div className="cards">
-        <img src={ex} alt="Express.js" />
-        <div className="progress" role="progressbar">
-          <div className="progress-bar" style={{ width: '75%', backgroundColor: '#fcae28' }}>90%</div>
-        </div>
-      </div>
-      <div className="cards">
-        <img src={mongo} alt="MongoDB" />
-        <div className="progress" role="progressbar">
-          <div className="progress-bar" style={{ width: '75%', backgroundColor: '#fcae28' }}>95%</div>
-        </div>
-      </div>
-      <div className="cards">
-        <img src={py} alt="Python" />
-        <div className="progress" role="progressbar">
-          <div className="progress-bar" style={{ width: '75%', backgroundColor: '#fcae28' }}>95%</div>
-        </div>
-      </div>
-      <div className="cards">
-        <img src={fig} alt="Figma" />
-        <div className="progress" role="progressbar">
-          <div className="progress-bar" style={{ width: '75%', backgroundColor: '#fcae28' }}>90%</div>
-        </div>
-      </div>
-      <div className="cards">
-        <img src={boot} alt="Figma" />
-        <div className="progress" role="progressbar">
-          <div className="progress-bar" style={{ width: '75%', backgroundColor: '#fcae28' }}>95%</div>
-        </div>
-      </div>
+      ))}
     </div>
-  </div>
+  </section>
 );
 
 export default Skill;
