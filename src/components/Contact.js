@@ -3,6 +3,8 @@ import "./Contact.css";
 import mk from "../assets/mk.jpg";
 import { FaGithub, FaLinkedin, FaArrowCircleUp, FaEnvelope } from "react-icons/fa";
 
+const CONTACT_EMAIL = "m.monishkanna@outlook.com";
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -28,7 +30,7 @@ const Contact = () => {
     const body = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.suggestion}`
     );
-    window.location.href = `mailto:m.monishkanna@outlook.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
 
     setStatus("Thanks! Your message draft is opened in your email app.");
     setFormData({ name: "", email: "", suggestion: "" });
@@ -99,7 +101,7 @@ const Contact = () => {
                 <FaLinkedin />
                 <span>LinkedIn</span>
               </a>
-              <a href="mailto:m.monishkanna@outlook.com" className="connect-item">
+              <a href={`mailto:${CONTACT_EMAIL}`} className="connect-item">
                 <FaEnvelope />
                 <span>Email</span>
               </a>
