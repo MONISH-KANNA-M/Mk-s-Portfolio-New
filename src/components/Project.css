@@ -51,6 +51,7 @@
   border: 1px solid rgba(34, 211, 238, 0.24);
   box-shadow: 0 8px 20px rgba(2, 6, 23, 0.16);
   color: #f8fafc;
+  flex-wrap: wrap;
 }
 
 .project-group-title span {
@@ -217,5 +218,26 @@
 
   .project-card {
     min-height: 0;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .project-group-title {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .project-card h3 {
+    font-size: 1rem;
+  }
+
+  .project-summary,
+  .project-details {
+    font-size: 0.9rem;
   }
 }

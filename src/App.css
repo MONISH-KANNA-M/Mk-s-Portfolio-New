@@ -26,6 +26,12 @@ body {
   min-height: 100vh;
 }
 
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 a {
   color: inherit;
 }
@@ -98,6 +104,41 @@ a {
 @media (max-width: 900px) {
   .app-shell {
     padding-top: 132px;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-shell {
+    padding: 190px 12px 0;
+  }
+
+  #home,
+  #about,
+  #skills,
+  #projects,
+  #experience,
+  #contact {
+    margin-bottom: 40px;
+  }
+
+  .home-shell,
+  .about-shell,
+  .ski,
+  .projects-container,
+  .experience-section,
+  .contact-section {
+    border-radius: 18px;
+    padding: 18px 12px;
+  }
+}
+
+@media (max-width: 420px) {
+  .app-shell {
+    padding-top: 206px;
+  }
+
+  .section-title {
+    font-size: clamp(1.6rem, 7vw, 2rem);
   }
 }
 

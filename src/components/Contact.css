@@ -288,3 +288,25 @@
     flex: unset;
   }
 }
+
+@media (max-width: 640px) {
+  .contact-form {
+    gap: 12px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    padding: 12px 13px;
+    font-size: 0.95rem;
+  }
+
+  .connect-item {
+    min-height: 50px;
+    padding: 0 12px;
+  }
+
+  .contact-footer .logo {
+    width: 52px;
+    height: 52px;
+  }
+}
