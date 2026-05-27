@@ -162,6 +162,66 @@
   box-shadow: 0 16px 30px rgba(251, 146, 60, 0.18);
 }
 
+/* Toggle button (hidden on wide screens) */
+.navbar-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.navbar-toggle:focus {
+  outline: 2px solid #22d3ee;
+  outline-offset: 2px;
+}
+
+.hamburger {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #e6eef8;
+  position: relative;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 22px;
+  height: 2px;
+  background: #e6eef8;
+  transition: transform 0.22s ease, opacity 0.22s ease;
+}
+
+.hamburger::before { top: -7px; }
+.hamburger::after { top: 7px; }
+
+.is-open .hamburger { background: transparent; }
+.is-open .hamburger::before { transform: rotate(45deg) translate(4px, 4px); }
+.is-open .hamburger::after { transform: rotate(-45deg) translate(4px, -4px); }
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+/* Badge for completed items */
+.badge {
+  display: inline-block;
+  margin-left: 8px;
+  background: rgba(148, 163, 184, 0.12);
+  color: #e6eef8;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 999px;
+  vertical-align: middle;
+  border: 1px solid rgba(148, 163, 184, 0.08);
+}
+
 @media (max-width: 900px) {
   .navbar {
     display: flex;
@@ -174,6 +234,42 @@
     align-items: stretch;
   }
 
+  .navbar-toggle { display: inline-flex; position: absolute; left: 16px; top: 12px; z-index: 1100; }
+
+  /* hide nav groups by default on small screens, show when open */
+  .navbar .navbar-nav { display: none; }
+  .navbar.is-open .navbar-nav { display: flex; }
+
+  .navbar.is-open .navbar-right { display: flex; }
+
+    /* Make download visible on small screens even when menu closed */
+    .navbar-download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #22d3ee 0%, #38bdf8 45%, #fb923c 100%);
+      color: #0f172a;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 8px 18px rgba(34,211,238,0.12);
+      transition: transform 0.16s ease;
+      position: absolute;
+      right: 16px;
+      top: 12px;
+      z-index: 1100;
+    }
+
+    .navbar-download:active,
+    .navbar-download:focus,
+    .navbar-download:hover { transform: translateY(-1px); }
+
+
+  @media (min-width: 901px) {
+    .navbar-download { position: static; box-shadow: none; padding: 0 16px; min-height: 56px; }
+  }
   .navbar-brand {
     justify-content: center;
     order: 1;

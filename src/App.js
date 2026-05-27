@@ -59,6 +59,7 @@ const App = () => {
       },
       {
         threshold: 0.18,
+        rootMargin: '-120px 0px -20px 0px',
       }
     );
 

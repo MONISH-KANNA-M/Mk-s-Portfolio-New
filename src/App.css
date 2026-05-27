@@ -105,6 +105,14 @@ a {
   .app-shell {
     padding-top: 132px;
   }
+  #home,
+  #about,
+  #skills,
+  #projects,
+  #experience,
+  #contact {
+    scroll-margin-top: 150px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -119,6 +127,7 @@ a {
   #experience,
   #contact {
     margin-bottom: 40px;
+    scroll-margin-top: 200px;
   }
 
   .home-shell,
@@ -139,6 +148,15 @@ a {
 
   .section-title {
     font-size: clamp(1.6rem, 7vw, 2rem);
+  }
+
+  #home,
+  #about,
+  #skills,
+  #projects,
+  #experience,
+  #contact {
+    scroll-margin-top: 216px;
   }
 }
 
@@ -200,6 +218,8 @@ section,
 #experience,
 #contact {
   margin-bottom: 56px;
+  /* offset anchors for fixed navbar */
+  scroll-margin-top: 120px;
 }
 
 .home-shell,

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import './About.css';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { SiLeetcode } from 'react-icons/si';
-import Me from '../assets/Me.jpg';
+import Moni_passport from '../assets/Moni_passport.jpeg';
 
 const skillWords = [
   "Full Stack Developer",
@@ -55,7 +55,7 @@ const About = () => {
 
       <div className="about-shell reveal" style={{ "--delay": "120ms" }}>
         <div className="about-photo-wrap">
-          <img src={Me} alt="Monish" className="about-photo" onError={(e) => e.target.src = 'fallback.jpg'} />
+          <img src={Moni_passport} alt="Monish" className="about-photo" onError={(e) => e.target.src = 'fallback.jpg'} />
           <span className="photo-deco square"></span>
           <span className="photo-deco dot"></span>
         </div>

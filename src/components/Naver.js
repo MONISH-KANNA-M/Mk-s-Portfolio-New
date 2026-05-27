@@ -3,6 +3,7 @@ import './Naver.css';
 
 const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     let lastY = window.scrollY;
@@ -34,13 +35,31 @@ const Navbar = () => {
     };
   }, []);
 
+  const toggleMobile = () => setMobileOpen(v => !v);
+
+  const handleDisabledClick = (e) => {
+    e.preventDefault();
+  };
+
   return (
-    <header className={`navbar ${isVisible ? 'navbar-visible' : 'navbar-hidden'}`}>
+    <header className={`navbar ${isVisible ? 'navbar-visible' : 'navbar-hidden'} ${mobileOpen ? 'is-open' : ''}`}>
+      <button
+        className="navbar-toggle"
+        aria-expanded={mobileOpen}
+        aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+        onClick={toggleMobile}
+      >
+        <span className="sr-only">Menu</span>
+        <span className="hamburger" aria-hidden="true" />
+      </button>
+
       <nav className="navbar-nav navbar-nav-left" aria-label="Primary navigation left">
         <ul>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
+          <li>
+            <a href="#projects" title="Projects section">Projects</a>
+          </li>
 
         </ul>
       </nav>
@@ -57,6 +76,8 @@ const Navbar = () => {
             <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
+
+   
 
         <a href="https://linkedin.com/in/monish-kanna-m" className="navbar-cta" target="_blank" rel="noopener noreferrer">
           Connect
