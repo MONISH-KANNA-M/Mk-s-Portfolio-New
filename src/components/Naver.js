@@ -37,10 +37,6 @@ const Navbar = () => {
 
   const toggleMobile = () => setMobileOpen(v => !v);
 
-  const handleDisabledClick = (e) => {
-    e.preventDefault();
-  };
-
   return (
     <header className={`navbar ${isVisible ? 'navbar-visible' : 'navbar-hidden'} ${mobileOpen ? 'is-open' : ''}`}>
       <button
